@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Claw - 专属极客阵地</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 FontAwesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 自定义配置与少量自定义样式 -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        cardBg: '#1e293b',
+                        brandBlue: '#3b82f6',
+                        brandPurple: '#8b5cf6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义暗黑模式滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+        
+        /* 代码块基础样式 */
+        .code-block-wrapper {
+            position: relative;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #94a3b8;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        pre {
+            background-color: #020617; /* 极深色背景 */
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            color: #e2e8f0;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-200 font-sans antialiased selection:bg-brandPurple selection:text-white">
+
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-darkBg/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-spider text-brandBlue text-2xl"></i>
+                    <span class="font-bold text-xl tracking-wider text-white">Open Claw</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#hero" class="hover:text-brandBlue transition-colors px-3 py-2 rounded-md font-medium">首页</a>
+                        <a href="#install" class="hover:text-brandBlue transition-colors px-3 py-2 rounded-md font-medium">保姆级安装</a>
+                        <a href="#cases" class="hover:text-brandBlue transition-colors px-3 py-2 rounded-md font-medium">实战案例</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 欢迎首屏 (Hero Section) -->
+    <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-brandBlue rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-brandPurple rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full bg-gray-800 border border-gray-700 text-sm font-semibold text-brandBlue">
+                v1.0.0 正式发布 🚀
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-white">
+                🎉 欢迎来到 <br class="md:hidden">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlue to-brandPurple">Open Claw</span> 专属阵地！
+            </h1>
+            <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                释放你的双手，让自动化成为日常。<br>
+                无论你是技术大神还是零基础小白，Open Claw 都能帮你轻松搞定繁琐任务！
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <div class="flex items-center gap-2 bg-cardBg px-4 py-2 rounded-lg border border-gray-700">
+                    <i class="fa-solid fa-bolt text-yellow-400"></i>
+                    <span>极速抓取</span>
+                </div>
+                <div class="flex items-center gap-2 bg-cardBg px-4 py-2 rounded-lg border border-gray-700">
+                    <i class="fa-solid fa-brain text-pink-400"></i>
+                    <span>智能处理</span>
+                </div>
+                <div class="flex items-center gap-2 bg-cardBg px-4 py-2 rounded-lg border border-gray-700">
+                    <i class="fa-solid fa-baby text-green-400"></i>
+                    <span>傻瓜式操作</span>
+                </div>
+            </div>
+
+            <a href="#install" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brandBlue border border-transparent rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brandBlue shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.7)] hover:-translate-y-1">
+                👇 马上开始配置
+            </a>
+        </div>
+    </section>
+
+    <!-- 保姆级安装教程 (Installation Guide) -->
+    <section id="install" class="py-20 bg-gray-900/50 border-y border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">🛠️ 保姆级安装教程</h2>
+                <p class="text-gray-400 text-lg">跟着做，绝对不出错！</p>
+            </div>
+
+            <!-- 视频教程区域 -->
+            <div class="mb-16 max-w-3xl mx-auto">
+                <div class="bg-cardBg p-2 rounded-2xl border border-gray-700 shadow-xl">
+                    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700 mb-4">
+                        <span class="text-sm font-medium text-gray-300"><i class="fa-solid fa-film mr-2 text-brandPurple"></i>觉得图文太长？看视频吧！</span>
+                    </div>
+                    
+                    <div class="relative w-full overflow-hidden rounded-xl bg-black shadow-inner" style="padding-bottom: 56.25%;">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full"
+                            src="https://player.bilibili.com/player.html?aid=116158732698288&bvid=BV1t5PjzQEH2&cid=36395879616&p=1&high_quality=1&danmaku=0" 
+                            scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
+                        </iframe>
+                    </div>
+                    <div class="mt-4 flex justify-center pb-2">
+                        <a href="https://www.bilibili.com/video/BV1t5PjzQEH2" target="_blank" class="text-xs text-gray-500 hover:text-brandBlue flex items-center gap-1 transition-colors">
+                            <i class="fa-brands fa-bilibili"></i> 无法播放？点击前往 B 站观看原视频
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 步骤列表 -->
+            <div class="space-y-8 max-w-3xl mx-auto relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-700 before:to-transparent">
+                <!-- Step 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-darkBg bg-brandBlue text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">1</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardBg p-6 rounded-xl border border-gray-700 shadow-lg">
+                        <h3 class="font-bold text-xl mb-2 text-white">准备基础环境</h3>
+                        <p class="text-gray-400 text-sm">下载并安装 <a href="https://nodejs.org/" target="_blank" class="text-brandBlue hover:underline">Node.js</a> (推荐 LTS 版本)。</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-darkBg bg-brandPurple text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">2</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardBg p-6 rounded-xl border border-gray-700 shadow-lg">
+                        <h3 class="font-bold text-xl mb-2 text-white">一键下载 Open Claw</h3>
+                        <div class="code-block-wrapper">
+                            <button class="copy-btn" onclick="copyText(this)"><i class="fa-regular fa-copy"></i> 复制</button>
+                            <pre><code>git clone https://github.com/your-repo/open-claw.git</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-darkBg bg-green-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">3</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-cardBg p-6 rounded-xl border border-gray-700 shadow-lg">
+                        <h3 class="font-bold text-xl mb-2 text-white">安装并启动</h3>
+                        <div class="code-block-wrapper">
+                            <button class="copy-btn" onclick="copyText(this)"><i class="fa-regular fa-copy"></i> 复制</button>
+                            <pre><code>cd open-claw
+npm install
+npm start</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实战案例 (使用真实图片) -->
+    <section id="cases" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">🔥 玩转 Open Claw：经典实战案例</h2>
+                <p class="text-gray-400 text-lg">看看这些令人心动的自动化结果</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- 案例 1 -->
+                <div class="bg-cardBg rounded-2xl overflow-hidden border border-gray-700 shadow-xl flex flex-col hover:-translate-y-2 transition-all duration-300">
+                    <div class="aspect-video relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" alt="图片文件夹截图" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent"></div>
+                        <span class="absolute bottom-4 left-4 text-xs font-mono bg-black/50 px-2 py-1 rounded text-brandBlue">C:\Downloads\Images_Saved</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">一键导出网页高清美图</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm bg-darkBg p-3 rounded-lg border border-gray-800 text-gray-400">
+                                <span class="text-brandBlue font-bold">场景：</span> 看到喜欢的画师主页，想把几十张高清大图一次性全存下来？
+                            </p>
+                            <p class="text-sm bg-darkBg p-3 rounded-lg border border-gray-800 text-gray-400">
+                                <span class="text-green-400 font-bold">效果：</span> 如图所示，所有图片按顺序排列，高清原图一键入库！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 案例 2 -->
+                <div class="bg-cardBg rounded-2xl overflow-hidden border border-gray-700 shadow-xl flex flex-col hover:-translate-y-2 transition-all duration-300">
+                    <div class="aspect-video relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=2070&auto=format&fit=crop" alt="Excel 表格截图" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent"></div>
+                        <span class="absolute bottom-4 left-4 text-xs font-mono bg-black/50 px-2 py-1 rounded text-brandPurple">Daily_Report.xlsx</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">自动整理每日资讯表格</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm bg-darkBg p-3 rounded-lg border border-gray-800 text-gray-400">
+                                <span class="text-brandPurple font-bold">场景：</span> 每天需要收集关键词新闻，手动复制粘贴太痛苦？
+                            </p>
+                            <p class="text-sm bg-darkBg p-3 rounded-lg border border-gray-800 text-gray-400">
+                                <span class="text-green-400 font-bold">效果：</span> 自动生成带链接、日期和分类的精美表格，效率提升 1000%！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-darkBg border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <i class="fa-solid fa-heart text-red-500 text-3xl mb-4 animate-bounce"></i>
+            <h3 class="text-xl font-bold text-white mb-2">感谢支持！技术改变生活。</h3>
+            <div class="flex justify-center gap-6 mt-8 mb-10">
+                <a href="#" class="text-gray-400 hover:text-[#fb7299] transition-colors"><i class="fa-brands fa-bilibili text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-[#5865F2] transition-colors"><i class="fa-brands fa-discord text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-github text-2xl"></i></a>
+            </div>
+            <p class="text-gray-600 text-sm">&copy; <span id="year"></span> Open Claw. 一起折腾，保持热爱。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        function copyText(button) {
+            const textToCopy = button.nextElementSibling.innerText;
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fa-solid fa-check"></i> 已复制!';
+                button.classList.add('text-green-400', 'bg-white/20');
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('text-green-400', 'bg-white/20');
+                }, 2000);
+            } catch (err) {
+                button.innerHTML = '错误';
+            }
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>
